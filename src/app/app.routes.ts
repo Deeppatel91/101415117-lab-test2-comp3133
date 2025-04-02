@@ -5,7 +5,7 @@ import { MissionDetailsComponent } from './components/mission-details/mission-de
 export const routes: Routes = [
   { path: '', component: MissionListComponent },
   { 
-    path: 'missions/flightNumber', 
+    path: 'missions/:flightNumber', 
     component: MissionDetailsComponent,
     // For Angular 17+, use this prerender config:
     data: {
