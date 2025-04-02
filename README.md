@@ -1,59 +1,49 @@
-# 101415117LabTest2Comp3133
+# 🚀 SpaceX Mission Tracker - Angular & Node.js
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+[![Angular](https://img.shields.io/badge/Angular-19.2.7-DD0031?logo=angular&logoColor=white)](https://angular.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-18.0.0-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.4-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 
-## Development server
+**🌐 Live Demo:** [https://101415117-lab-test2-comp3133.vercel.app](https://101415117-lab-test2-comp3133-git-main-deeps-projects-80f17089.vercel.app/)
 
-To start a local development server, run:
+A modern web application tracking SpaceX missions with real-time data, built with Angular 19 (SSR) and Node.js.
 
-```bash
-ng serve
-```
+## ✨ Key Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- 🛰️ **Real-time Mission Data** - Fetching from SpaceX REST API
+- ⚡ **Blazing Fast Performance** - Server-Side Rendering (SSR) with Angular Universal
+- 📱 **Fully Responsive** - Works on all device sizes
+- 🔍 **Interactive UI** - Detailed mission views with animations
+- 📊 **Data Visualization** - Charts and statistics for mission data
 
-## Code scaffolding
+## 🛠️ Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Frontend
+![Angular](https://img.shields.io/badge/-Angular-DD0031?logo=angular&logoColor=white)
+![RxJS](https://img.shields.io/badge/-RxJS-B7178C?logo=reactivex&logoColor=white)
+![Angular Material](https://img.shields.io/badge/-Material-757575?logo=angular&logoColor=white)
 
-```bash
-ng generate component component-name
-```
+### Backend
+![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### API
+![SpaceX API](https://img.shields.io/badge/-SpaceX_API-000000?logo=spacex&logoColor=white)
 
-```bash
-ng generate --help
-```
+### Deployment
+![Vercel](https://img.shields.io/badge/-Vercel-000000?logo=vercel&logoColor=white)
 
-## Building
+## 🚀 Getting Started
 
-To build the project run:
+### Prerequisites
+- Node.js v18+
+- npm v8+ or yarn
+- Angular CLI v19+
 
-```bash
-ng build
-```
+### Installation
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Deeppatel91/101415117-lab-test2-comp3133.git
+   cd 101415117-lab-test2-comp3133
