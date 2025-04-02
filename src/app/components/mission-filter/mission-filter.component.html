@@ -1,0 +1,46 @@
+<div class="filter-panel">
+    <h2 class="filter-heading">Filter Options</h2>
+    
+    <div class="filter-group">
+      <label class="filter-label">Launch Year</label>
+      <mat-form-field appearance="outline" class="filter-select">
+        <mat-select [(ngModel)]="filters.year" (ngModelChange)="applyFilters()" placeholder="All Years">
+          <mat-option value="">All Years</mat-option>
+          <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div class="filter-group">
+      <label class="filter-label">Launch Result</label>
+      <div class="radio-buttons">
+        <mat-radio-group [(ngModel)]="filters.launchSuccess" (change)="applyFilters()">
+          <mat-radio-button [value]="null" color="primary">All</mat-radio-button>
+          <mat-radio-button value="true" color="primary">Success</mat-radio-button>
+          <mat-radio-button value="false" color="primary">Failed</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    
+    <div class="filter-group">
+      <label class="filter-label">Landing Result</label>
+      <div class="radio-buttons">
+        <mat-radio-group [(ngModel)]="filters.landSuccess" (change)="applyFilters()">
+          <mat-radio-button [value]="null" color="primary">All</mat-radio-button>
+          <mat-radio-button value="true" color="primary">Success</mat-radio-button>
+          <mat-radio-button value="false" color="primary">Failed</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    
+    <div class="filter-actions">
+      <button mat-flat-button color="primary" (click)="applyFilters()">
+        <mat-icon>filter_list</mat-icon>
+        Filter
+      </button>
+      <button mat-stroked-button (click)="resetFilters()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset
+      </button>
+    </div>
+  </div>

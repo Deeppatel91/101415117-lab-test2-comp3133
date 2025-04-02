@@ -1,0 +1,76 @@
+<div class="mission-dashboard">
+    <h1 class="dashboard-title">Mission List</h1>
+    
+    <app-mission-filter (filtersChanged)="applyFilters($event)"></app-mission-filter>
+    
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p class="loading-text">Loading missions...</p>
+    </div>
+    
+    <div *ngIf="error" class="error-message">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ error }}</p>
+    </div>
+    
+    <div *ngIf="!isLoading && !error && filteredLaunches.length === 0" class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <p>No missions found matching your filters</p>
+      <button mat-stroked-button color="primary" (click)="loadLaunches()">Reset All Filters</button>
+    </div>
+    
+    <div *ngIf="!isLoading && !error && filteredLaunches.length > 0" class="missions-container">
+      <div class="mission-card" *ngFor="let launch of filteredLaunches">
+        <div class="mission-header">
+          <div class="mission-patch">
+            <img *ngIf="launch.links?.mission_patch_small; else defaultPatch" 
+                 [src]="launch.links.mission_patch_small" 
+                 [alt]="launch.mission_name + ' patch'">
+            <ng-template #defaultPatch>
+              <div class="default-patch">
+                <mat-icon>rocket_launch</mat-icon>
+              </div>
+            </ng-template>
+          </div>
+          <div class="mission-title">
+            <h2>{{ launch.mission_name }}</h2>
+            <span class="flight-number">Flight #{{ launch.flight_number }}</span>
+          </div>
+        </div>
+        
+        <div class="mission-description">
+          <p>{{ (launch.details || 'No details available for this mission.') | truncate:120 }}</p>
+        </div>
+        
+        <div class="mission-details">
+          <div class="detail-item">
+            <span class="detail-label">Year:</span>
+            <span class="detail-value">{{ launch.launch_year }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Rocket:</span>
+            <span class="detail-value">{{ launch.rocket.rocket_name }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Launch:</span>
+            <span class="detail-value" [ngClass]="{'success': launch.launch_success, 'failure': !launch.launch_success}">
+              {{ launch.launch_success ? 'Success' : 'Failed' }}
+            </span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Landing:</span>
+            <span class="detail-value" [ngClass]="{'success': getLandingSuccess(launch) === 'Yes', 'failure': getLandingSuccess(launch) === 'No'}">
+              {{ getLandingSuccess(launch) }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="mission-actions">
+          <a mat-flat-button color="primary" [routerLink]="['/missions', launch.flight_number]">
+            <mat-icon>visibility</mat-icon>
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,120 @@
+<div class="details-container">
+  <button mat-raised-button color="primary" (click)="goBack()" class="back-button">
+    <mat-icon>arrow_back</mat-icon> Back to Missions
+  </button>
+
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="launch && !isLoading && !error" class="mission-details-wrapper">
+    <mat-card class="mission-details-card">
+      <div class="card-header-container">
+        <div class="header-content">
+          <mat-card-title>{{ launch.mission_name }}</mat-card-title>
+          <mat-card-subtitle>Flight #{{ launch.flight_number }} ({{ launch.launch_year }})</mat-card-subtitle>
+        </div>
+        
+        <div class="mission-patch-container" *ngIf="launch.links?.mission_patch_small">
+          <img [src]="launch.links.mission_patch_small" 
+               alt="Mission patch"
+               class="mission-patch">
+        </div>
+      </div>
+      
+      <mat-card-content>
+        <div class="details-grid">
+          <div class="details-section">
+            <h3><mat-icon class="section-icon">info</mat-icon> Mission Details</h3>
+            <p class="mission-details">{{ launch.details || 'No details available' }}</p>
+            
+            <div *ngIf="launch.launch_failure_details" class="failure-details">
+              <h4><mat-icon class="warn-icon">warning</mat-icon> Failure Details</h4>
+              <p>{{ getLaunchFailureDetails() }}</p>
+            </div>
+          </div>
+          
+          <div class="details-section">
+            <h3><mat-icon class="section-icon">rocket</mat-icon> Rocket Information</h3>
+            <mat-list class="info-list">
+              <mat-list-item>
+                <span matListItemTitle>Name</span>
+                <span matListItemLine>{{ launch.rocket.rocket_name }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Type</span>
+                <span matListItemLine>{{ launch.rocket.rocket_type }}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Launch Success</span>
+                <span matListItemLine [class.success]="launch.launch_success === true" 
+                                     [class.failure]="launch.launch_success === false">
+                  <mat-icon *ngIf="launch.launch_success === true" class="status-icon success">check_circle</mat-icon>
+                  <mat-icon *ngIf="launch.launch_success === false" class="status-icon failure">cancel</mat-icon>
+                  {{ launch.launch_success === true ? 'Yes' : (launch.launch_success === false ? 'No' : 'Unknown') }}
+                </span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Landing Success</span>
+                <span matListItemLine [class.success]="getLandingSuccess(launch) === 'Yes'" 
+                                     [class.failure]="getLandingSuccess(launch) === 'No'"
+                                     [class.unknown]="getLandingSuccess(launch) === 'Unknown'">
+                  <mat-icon *ngIf="getLandingSuccess(launch) === 'Yes'" class="status-icon success">check_circle</mat-icon>
+                  <mat-icon *ngIf="getLandingSuccess(launch) === 'No'" class="status-icon failure">cancel</mat-icon>
+                  {{ getLandingSuccess(launch) }}
+                </span>
+              </mat-list-item>
+              <mat-list-item *ngIf="launch.rocket.first_stage?.cores?.[0]?.landing_type as landingType">
+                <span matListItemTitle>Landing Type</span>
+                <span matListItemLine>{{ landingType }}</span>
+              </mat-list-item>
+              <mat-list-item *ngIf="launch.rocket.first_stage?.cores?.[0]?.landing_vehicle as landingVehicle">
+                <span matListItemTitle>Landing Vehicle</span>
+                <span matListItemLine>{{ landingVehicle }}</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          
+          <div class="details-section">
+            <h3><mat-icon class="section-icon">location_on</mat-icon> Launch Site</h3>
+            <p *ngIf="launch.launch_site?.site_name_long || launch.launch_site?.site_name; else noSiteInfo" class="site-info">
+              {{ launch.launch_site?.site_name_long }}
+              <span *ngIf="launch.launch_site?.site_name">({{ launch.launch_site?.site_name }})</span>
+            </p>
+            <ng-template #noSiteInfo>
+              <p>No launch site information available</p>
+            </ng-template>
+          </div>
+          
+          <div class="details-section" *ngIf="launch.links?.article_link || launch.links?.wikipedia || launch.links?.video_link">
+            <h3><mat-icon class="section-icon">link</mat-icon> Links</h3>
+            <div class="links-container">
+              <a mat-raised-button *ngIf="launch.links?.article_link" 
+                 [href]="launch.links.article_link" 
+                 target="_blank"
+                 class="link-button">
+                <mat-icon>article</mat-icon> Article
+              </a>
+              <a mat-raised-button *ngIf="launch.links?.wikipedia" 
+                 [href]="launch.links.wikipedia" 
+                 target="_blank"
+                 class="link-button">
+                <mat-icon>public</mat-icon> Wikipedia
+              </a>
+              <a mat-raised-button *ngIf="launch.links?.video_link" 
+                 [href]="launch.links.video_link" 
+                 target="_blank"
+                 class="link-button">
+                <mat-icon>videocam</mat-icon> Video
+              </a>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

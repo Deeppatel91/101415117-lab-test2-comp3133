@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, MatToolbarModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+ // styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = '101415117-lab-test2-comp3133';
+  title = '101415117-SpaceX Mission Explorer';
 }
