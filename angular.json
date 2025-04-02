@@ -15,7 +15,6 @@
           "options": {
             "prerender": false,
             "outputPath": "dist/101415117-lab-test2-comp3133",
-          "server": "dist/101415117-lab-test2-comp3133/server",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

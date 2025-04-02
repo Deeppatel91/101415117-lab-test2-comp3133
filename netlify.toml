@@ -1,7 +1,7 @@
 [build]
   command = "npm install --legacy-peer-deps && ng build --configuration production"
   publish = "dist/101415117-lab-test2-comp3133/browser"
-  functions = "dist/101415117-lab-test2-comp3133/server"  # Required for SSR
+  functions = "dist/101415117-lab-test2-comp3133/server"
 
 # Ensure Node.js version matches Angular Universal requirements
 [context.production.environment]
