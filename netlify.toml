@@ -6,7 +6,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[dev]
-  publish = "dist/101415117-lab-test2-comp3133"
-  autoLaunch = false
