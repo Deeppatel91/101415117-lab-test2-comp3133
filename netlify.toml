@@ -1,8 +1,7 @@
 [build]
-  command = "npm run build"
-  publish = "dist/101415117-lab-test2-comp3133/browser/browser/browser" 
+  command = "ng build --configuration production"
+  publish = "dist/101415117-lab-test2-comp3133/browser"
+  functions = "dist/101415117-lab-test2-comp3133/server" 
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[context.production.environment]
+  NODE_VERSION = "18.0.0"  
