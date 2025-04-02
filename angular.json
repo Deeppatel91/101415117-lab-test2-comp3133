@@ -14,7 +14,10 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "prerender": false,
-          "outputPath": "dist/101415117-lab-test2-comp3133",
+            "outputPath": "dist/101415117-lab-test2-comp3133/browser",
+            "outputMode": "browser-only",
+            "ssr": false,
+            "prerender": false,
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

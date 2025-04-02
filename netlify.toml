@@ -2,7 +2,6 @@
   command = "npm run build"
   publish = "dist/101415117-lab-test2-comp3133/browser"
 
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
