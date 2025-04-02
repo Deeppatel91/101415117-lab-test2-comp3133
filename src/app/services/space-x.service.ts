@@ -15,8 +15,8 @@ export class SpaceXService {
     return this.http.get<Launch[]>(this.apiUrl);
   }
 
-  getLaunchByFlightNumber(flightNumber: number): Observable<Launch> {
-    return this.http.get<Launch>(`${this.apiUrl}/${flightNumber}`); // Fixed URL construction
+  getLaunchByFlightNumber(id: number): Observable<Launch> {
+    return this.http.get<Launch>(`${this.apiUrl}/${id}`); // Fixed URL construction
   }
 
   getLaunchesByYear(year: string): Observable<Launch[]> {

@@ -38,18 +38,18 @@ export class MissionDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const flightNumber = this.route.snapshot.paramMap.get('flightNumber');
-    if (flightNumber) {
-      this.loadLaunchDetails(+flightNumber);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.loadLaunchDetails(+id);
     } else {
       this.error = 'No flight number provided';
       this.isLoading = false;
     }
   }
 
-  loadLaunchDetails(flightNumber: number): void {
+  loadLaunchDetails(id: number): void {
     this.isLoading = true;
-    this.spaceXService.getLaunchByFlightNumber(flightNumber).subscribe({
+    this.spaceXService.getLaunchByFlightNumber(id).subscribe({
       next: (launch) => {
         this.launch = launch;
         this.isLoading = false;
