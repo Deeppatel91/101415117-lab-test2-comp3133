@@ -6,13 +6,8 @@ export const routes: Routes = [
   { path: '', component: MissionListComponent },
   { 
     path: 'missions/:flightNumber', 
-    component: MissionDetailsComponent,
-    // For Angular 17+, use this prerender config:
-    data: {
-      prerender: {
-        renderMode: 'dynamic'
-      }
-    }
+    component: MissionDetailsComponent 
+    // No prerender config (renders dynamically at runtime)
   },
   { path: '**', redirectTo: '' }
 ];
