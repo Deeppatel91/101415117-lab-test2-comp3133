@@ -1,3 +1,4 @@
+// app.routes.ts
 import { Routes } from '@angular/router';
 import { MissionListComponent } from './components/mission-list/mission-list.component';
 import { MissionDetailsComponent } from './components/mission-details/mission-details.component';
@@ -7,16 +8,12 @@ export const routes: Routes = [
   {
     path: 'missions/:flightNumber',
     component: MissionDetailsComponent,
-    data: {
-      prerender: {
-        getPrerenderParams: () => [
-          { flightNumber: '1' },
-          { flightNumber: '2' },
-          { flightNumber: '3' },
-          // Add more flight numbers you want to prerender
-        ]
+    providers: [
+      {
+        provide: 'PRERENDER_PATHS',
+        useValue: ['1', '2', '3', '4', '5'] // List of flight numbers to prerender
       }
-    }
+    ]
   },
   { path: '**', redirectTo: '' }
 ];
